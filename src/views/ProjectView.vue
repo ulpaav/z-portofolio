@@ -1,5 +1,10 @@
 <template>
-  <main>
-    <p>test project</p>
-  </main>
+  <div>
+    <NavbarSection />
+    <section class="py-24 text-center text-white">Project Page</section>
+  </div>
 </template>
+
+<script setup>
+import NavbarSection from '@/component/layout/NavbarSection.vue'
+</script>
