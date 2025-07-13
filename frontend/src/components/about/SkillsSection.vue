@@ -9,10 +9,12 @@ const skills = ref([])
 // Fetch ke server pas komponen mount
 onMounted(async () => {
   try {
+    console.log('Fetching skills data...')
     const response = await axios.get('/api/skills')
+    console.log('Skills response:', response.data)
     skills.value = response.data
   } catch (error) {
-    console.error(error)
+    console.error('Skills fetch error:', error.response?.data || error.message)
   }
 })
 </script>

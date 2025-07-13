@@ -7,10 +7,12 @@ const projects = ref([])
 
 onMounted(async () => {
   try {
+    console.log('Fetching project data...')
     const response = await axios.get('/api/project')
+    console.log('Project response:', response.data)
     projects.value = response.data
   } catch (error) {
-    console.error(error)
+    console.error('Project fetch error:', error.response?.data || error.message)
   }
 })
 </script>
