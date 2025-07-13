@@ -4,7 +4,7 @@ require('dotenv').config({ path: path.resolve(__dirname, '..',
 '.env.development.local') });
 
 const { sql } = require('@vercel/postgres');
-const { educationHistory, skills, projects } = require('./data.js');
+const { educationHistory, skills, project } = require('./data.js');
 
 async function seed() {
     try {
@@ -15,7 +15,7 @@ async function seed() {
         
         await Promise.all(educationHistory.map(e => sql`INSERT INTO education (institution, major, period) VALUES (${e.institution}, ${e.major}, ${e.period});`));
         await Promise.all(skills.map(s => sql`INSERT INTO skills (name, level) VALUES (${s.name}, ${s.level});`));
-        await Promise.all(projects.map(p => sql`INSERT INTO projects (title, image, description, tech, link) VALUES (${p.title}, ${p.image}, ${p.description}, ${p.tech}, ${p.link});`));
+        await Promise.all(project.map(p => sql`INSERT INTO projects (title, image, description, tech, link) VALUES (${p.title}, ${p.image}, ${p.description}, ${p.tech}, ${p.link});`));
         
         console.log('Proses seeding data berhasil!');
     }   catch (error) {
