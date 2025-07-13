@@ -1,10 +1,10 @@
-// File: api/projects.js
-import { projects } from '../backend/data.js';
+// api/project.js
+const { project } = require('../backend/data.js');
 
-export default function handler(req, res) {
+module.exports = (req, res) => {
     if (req.method === 'GET') {
-        res.status(200).json(projects);
+        res.status(200).json(project);
     } else {
         res.status(405).json({ message: 'Method Not Allowed' });
     }
-}
+};

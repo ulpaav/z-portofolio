@@ -26,7 +26,7 @@ export const skills = [
     { name: 'HTML5 & CSS3', level: 'Mahir' }
 ]
 
-export const projects = [
+export const project = [
     {
         title: 'Website Toko Online',
         image: '@/images/website_tooko_online.webp',
