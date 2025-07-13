@@ -1,5 +1,5 @@
 // File: api/skills.js
-import { skills } from '../data.js';
+import { skills } from '../backend/data.js';
 
 export default function handler(req, res) {
     if (req.method === 'GET') {
