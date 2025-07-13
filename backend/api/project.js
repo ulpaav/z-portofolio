@@ -1,5 +1,5 @@
 // File: api/projects.js
-import { projects } from '../backend/data.js';
+import { projects } from '../data.js';
 
 export default function handler(req, res) {
     if (req.method === 'GET') {

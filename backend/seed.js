@@ -4,7 +4,7 @@ require('dotenv').config({ path: path.resolve(__dirname, '..',
 '.env.development.local') });
 
 const { sql } = require('@vercel/postgres');
-const { educationHistory, skills, projects } = require('../data.js');
+const { educationHistory, skills, projects } = require('./data.js');
 
 async function seed() {
     try {

@@ -1,5 +1,5 @@
 // File: api/education.js
-import { educationHistory } from '../backend/data.js';
+import { educationHistory } from '../data.js';
 
 export default function handler(req, res) {
     if (req.method === 'GET') {
