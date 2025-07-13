@@ -1,16 +1,20 @@
 <script setup>
 import SectionTitle from '/src/components/layout/TitleSection.vue'
+import { ref, onMounted } from 'vue'
+import axios from 'axios'
 
-const skills = [
-  { name: 'Vue.js', level: 'Mahir' },
-  { name: 'JavaScript', level: 'Mahir' },
-  { name: 'Tailwind CSS', level: 'Mahir' },
-  { name: 'Node.js', level: 'Menengah' },
-  { name: 'Express.js', level: 'Menengah' },
-  { name: 'PostgreSQL', level: 'Menengah' },
-  { name: 'Git & GitHub', level: 'Mahir' },
-  { name: 'HTML5 & CSS3', level: 'Mahir' },
-]
+// Data kosong dulu
+const skills = ref([])
+
+// Fetch ke server pas komponen mount
+onMounted(async () => {
+  try {
+    const response = await axios.get('http://localhost:3000/api/skills')
+    skills.value = response.data
+  } catch (error) {
+    console.error(error)
+  }
+})
 </script>
 
 <template>

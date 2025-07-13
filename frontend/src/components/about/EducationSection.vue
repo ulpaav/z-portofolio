@@ -1,7 +1,22 @@
 <template>
   <section id="pendidikan" class="relative py-24 bg-white overflow-hidden">
+    <!-- Gambar Bunga Atas -->
+    <img
+      src="/src/assets/image/border-pink.webp"
+      alt="Bunga Atas"
+      class="absolute top-0 left-1/2 transform -translate-x-1/2 w-full max-w-screen-xl z-0"
+    />
+
+    <!-- Gambar Bunga Bawah -->
+    <img
+      src="/src/assets/image/border-pink.webp"
+      alt="Bunga Bawah"
+      class="absolute bottom-0 left-1/2 transform -translate-x-1/2 rotate-180 w-full max-w-screen-xl z-0"
+    />
+
+    <!-- Konten Pendidikan -->
     <div class="container mx-auto px-4 relative z-10">
-      <!-- Judul Clean -->
+      <!-- Judul -->
       <div class="text-center mb-12">
         <h2
           class="text-4xl md:text-4xl font-bold text-gray-800"
@@ -23,7 +38,7 @@
         data-aos-delay="200"
       ></div>
 
-      <!-- Timeline Items -->
+      <!-- Timeline -->
       <div class="flex flex-col items-center space-y-20 relative">
         <div
           v-for="(edu, index) in educationHistory"
@@ -32,7 +47,7 @@
           data-aos="fade-up"
           :data-aos-delay="index * 200"
         >
-          <!-- Titik Paku -->
+          <!-- Titik -->
           <div
             class="w-8 h-8 bg-[#F297A0] rounded-full flex items-center justify-center border-4 border-white shadow-lg z-10 animate-[pulse_2s_ease-in-out_infinite]"
           ></div>
@@ -51,19 +66,20 @@
   </section>
 </template>
 
+
 <script setup>
-const educationHistory = [
-  {
-    id: 1,
-    period: '2023 - Sekarang',
-    institution: 'Universitas Amikom Yogyakarta',
-    major: 'S1 - Teknik Informatika'
-  },
-  {
-    id: 2,
-    period: '2020 - 2023',
-    institution: 'SMA Negeri 3 Singkawang',
-    major: 'MIPA'
+import { ref, onMounted } from 'vue';
+import axios from 'axios';
+
+const educationHistory = ref([])
+
+onMounted(async () => {
+  try {
+    const response = await axios.get('http://localhost:3000/api/education')
+    educationHistory.value = response.data
+  } catch (error) {
+    console.error(error)
   }
-];
+})
 </script>
+

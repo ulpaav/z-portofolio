@@ -1,36 +1,18 @@
 <script setup>
 import SectionTitle from '/src/components/layout/TitleSection.vue';
+import { ref, onMounted } from 'vue'
+import axios from 'axios'
 
-const projects = [
-  {
-    title: 'Website Toko Online',
-    image: 'https://via.placeholder.com/500x300?text=Proyek+1',
-    description: 'Platform e-commerce dengan fitur keranjang belanja.',
-    tech: ['Vue.js', 'Express.js', 'PostgreSQL'],
-    link: '#'
-  },
-  {
-    title: 'Aplikasi Manajemen Tugas',
-    image: 'https://via.placeholder.com/500x300?text=Proyek+2',
-    description: 'Aplikasi untuk melacak progres tugas harian.',
-    tech: ['React', 'Firebase'],
-    link: '#'
-  },
-  {
-    title: 'Sistem Booking Online',
-    image: 'https://via.placeholder.com/500x300?text=Proyek+3',
-    description: 'Aplikasi booking untuk reservasi layanan.',
-    tech: ['Next.js', 'MongoDB'],
-    link: '#'
-  },
-  {
-    title: 'Dashboard Admin',
-    image: 'https://via.placeholder.com/500x300?text=Proyek+4',
-    description: 'Dashboard admin dengan data real-time.',
-    tech: ['Laravel', 'MySQL'],
-    link: '#'
+const projects = ref([])
+
+onMounted(async () => {
+  try {
+    const response = await axios.get('http://localhost:3000/api/projects')
+    projects.value = response.data
+  } catch (error) {
+    console.error(error)
   }
-];
+})
 </script>
 
 <template>

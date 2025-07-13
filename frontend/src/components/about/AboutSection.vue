@@ -11,7 +11,7 @@
     >
       <div class="relative w-full h-[350px] overflow-hidden">
         <img
-          src="@/assets/image/asa.webp"
+          src="@/assets/image/ulpaa.webp"
           alt="Foto Saya"
           class="w-full h-full object-cover"
         />
