@@ -2,6 +2,7 @@ import './assets/main.css'
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
+import axios from 'axios'
 
 import animateOnScroll from './directives/animateOnScroll';
 
@@ -18,6 +19,10 @@ import { faEnvelopeOpen, faLocationDot } from '@fortawesome/free-solid-svg-icons
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import { onMounted } from 'vue'
+
+// Configure axios base URL
+axios.defaults.baseURL = import.meta.env.VITE_API_URL || ''
+
 AOS.init({
   once: false,
   mirror: true,

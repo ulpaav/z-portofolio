@@ -8,5 +8,9 @@
         { "src": "/(.*)", "dest": "/frontend/$1" }
     ],
     "outputDirectory": "frontend/dist",
-    "rootDir": "frontend"
+    "functions": {
+        "api/**/*.js": {
+            "maxDuration": 10
+        }
+    }
 }
