@@ -25,7 +25,7 @@ Dibangun menggunakan **SPA** modern berbasis **Vue.js 3**, dengan backend **Expr
 
 
 - ## 📦 Tech Stack
-  
+
 Framework       | [Vue.js 3.5.17](https://vuejs.org/)                                                     | Frontend SPA utama
 Router          | [Vue Router 4.5.1](https://router.vuejs.org/)                                           | Routing antar halaman
 Build Tool      | [Vite 7](https://vitejs.dev/)                                                           | Dev server & bundler cepat
