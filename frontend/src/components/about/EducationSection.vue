@@ -73,14 +73,37 @@ import axios from 'axios';
 
 const educationHistory = ref([])
 
+// Fallback data jika API gagal
+const fallbackEducationData = [
+    {
+        id: 1,
+        period: '2023 - Sekarang',
+        institution: 'Universitas Amikom Yogyakarta',
+        major: 'S1 - Teknik Informatika'
+    },
+    {
+        id: 2,
+        period: '2020 - 2023',
+        institution: 'SMA Negeri 3 Singkawang',
+        major: 'MIPA'
+    }
+]
+
 onMounted(async () => {
   try {
     console.log('Fetching education data...')
-    const response = await axios.get('/api/education')
+    const response = await axios.get('/api/education', {
+      timeout: 5000,
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
     console.log('Education response:', response.data)
     educationHistory.value = response.data
   } catch (error) {
     console.error('Education fetch error:', error.response?.data || error.message)
+    console.log('Using fallback data...')
+    educationHistory.value = fallbackEducationData
   }
 })
 </script>

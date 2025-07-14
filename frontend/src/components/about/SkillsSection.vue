@@ -6,15 +6,34 @@ import axios from 'axios'
 // Data kosong dulu
 const skills = ref([])
 
+// Fallback data jika API gagal
+const fallbackSkillsData = [
+    { name: 'Vue.js', level: 'Mahir' },
+    { name: 'JavaScript', level: 'Mahir' },
+    { name: 'Tailwind CSS', level: 'Mahir' },
+    { name: 'Node.js', level: 'Menengah' },
+    { name: 'Express.js', level: 'Menengah' },
+    { name: 'PostgreSQL', level: 'Menengah' },
+    { name: 'Git & GitHub', level: 'Mahir' },
+    { name: 'HTML5 & CSS3', level: 'Mahir' }
+]
+
 // Fetch ke server pas komponen mount
 onMounted(async () => {
   try {
     console.log('Fetching skills data...')
-    const response = await axios.get('/api/skills')
+    const response = await axios.get('/api/skills', {
+      timeout: 5000,
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
     console.log('Skills response:', response.data)
     skills.value = response.data
   } catch (error) {
     console.error('Skills fetch error:', error.response?.data || error.message)
+    console.log('Using fallback data...')
+    skills.value = fallbackSkillsData
   }
 })
 </script>
