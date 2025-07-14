@@ -33,20 +33,26 @@ const project = [
 ];
 
 export default function handler(req, res) {
+    console.log('Project API called:', req.method, req.url);
+    
     setCorsHeaders(res);
     
     if (req.method === 'OPTIONS') {
+        console.log('Handling OPTIONS request');
         res.status(200).end();
         return;
     }
     
     if (req.method === 'GET') {
         try {
+            console.log('Sending project data:', project);
             res.status(200).json(project);
         } catch (error) {
+            console.error('Project API error:', error);
             res.status(500).json({ error: 'Internal Server Error' });
         }
     } else {
+        console.log('Method not allowed:', req.method);
         res.status(405).json({ message: 'Method Not Allowed' });
     }
 }

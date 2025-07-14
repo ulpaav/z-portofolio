@@ -20,8 +20,10 @@ import AOS from 'aos'
 import 'aos/dist/aos.css'
 import { onMounted } from 'vue'
 
-// Configure axios base URL
-axios.defaults.baseURL = import.meta.env.VITE_API_URL || ''
+// Configure axios for development only
+if (import.meta.env.DEV) {
+    axios.defaults.baseURL = 'http://localhost:3000'
+}
 
 AOS.init({
   once: false,
