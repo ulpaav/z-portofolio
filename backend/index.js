@@ -12,5 +12,5 @@ app.get('/api/skills', (req, res) => res.json(skills));
 app.get('/api/project', (req, res) => res.json(project));
 app.listen(PORT, () => {
 console.log(` Server backend berjalan di
-http://localhost:${PORT}`);
+https://z-portofolio-ten.vercel.app/:${PORT}`);
 });
